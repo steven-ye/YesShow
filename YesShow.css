@@ -1,0 +1,94 @@
+@charset "utf-8";
+/* CSS Document */
+
+.YesShow{
+	position:relative;
+	width:300px;
+	height:300px;
+	border:1px solid #ccc;
+	overflow:hidden;
+}
+.YesShow img{
+	border:0;
+	width: 100%;
+	height:100%;
+	margin:0;
+}
+.YesShow ul{
+	list-style:none;
+	margin:0;
+	padding:0;
+	position:relative;
+	top:0;
+	left:0;
+	font-size:0;
+	letter-spacing: -8px;/*根据不同字体字号或许需要做一定的调整*/
+    word-spacing: -8px;
+}
+.YesShow ul li{
+	display:inline-block;
+	*display:inline;
+    *zoom:1;
+	letter-spacing:normal;
+    word-spacing:normal;
+	font-size:12px;
+	text-align:center;
+	vertical-align:middle;
+	line-height: 300px;
+}
+.YesShow>p{
+	margin:0;
+	position:absolute;
+	bottom:0;
+	right:2px; 
+}
+.YesShow>p span{
+	display:inline-block;
+	width: 8px;
+	height:8px;
+	background-color:#333;
+	margin: 2px;
+	cursor:pointer;
+}
+.YesShow>p span.on{
+	background-color:#f00;
+}
+.YesShow>p.num span{
+	width: 20px;
+	height:20px;
+	line-height:20px;
+	text-align:center;
+	color:#fff;
+}
+.YesShow>p.thumbs{
+	left:-2px;
+}
+.YesShow>p.thumbs span{
+	width: 40px;
+	height:40px;
+	border:2px solid #ccc;
+}
+.YesShow>p.thumbs span.on{
+	border-color:#00f;
+}
+.YesShow .prev,.YesShow .next{
+	position:absolute;
+	bottom: 2px;
+	display:block;
+	width: 10px;
+	line-height:44px;
+	background-color:#666;
+	color:#fff;
+	font-size:18px;
+	font-weight:bolder;
+	cursor:pointer;
+}
+.YesShow .next{
+	right:0;
+}
+.YesShow .transparent{
+	filter:alpha(opacity=60);  
+      -moz-opacity:0.6;  
+      -khtml-opacity: 0.6;  
+      opacity: 0.6; 
+}

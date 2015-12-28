@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>YesShow</title>
+<script src="jquery-1.11.1.min.js"></script>
+<script src="jquery.yesshow.js"></script>
+<style>
+  body>div{display:inline-block}
+</style>
+<link rel="stylesheet" href="YesShow.css" />
+</head>
+<body>
+    <div id="yes">
+        <ul>
+            <li><a href="#"><img src="images/001.jpeg"/></a></li>
+            <li><a href="#"><img src="images/002.jpeg"/></a></li>
+            <li><a href="#"><img src="images/003.jpeg"/></a></li>
+            <li><img src="images/004.jpeg"/></li>
+            <li><img src="images/005.jpeg"/></li>
+            <li><img src="images/006.jpeg"/></li>
+        </ul>
+    </div>
+    <div id="yes1">
+        <ul>
+            <li><a href="#"><img src="images/001.jpeg"/></a></li>
+            <li><a href="#"><img src="images/002.jpeg"/></a></li>
+            <li><a href="#"><img src="images/003.jpeg"/></a></li>
+            <li><img src="images/004.jpeg"/></li>
+            <li><img src="images/005.jpeg"/></li>
+            <li><img src="images/006.jpeg"/></li>
+        </ul>
+    </div>
+    <div id="yes2">
+        <ul>
+            <li><a href="#"><img src="images/001.jpeg"/></a></li>
+            <li><a href="#"><img src="images/002.jpeg"/></a></li>
+            <li><a href="#"><img src="images/003.jpeg"/></a></li>
+            <li><img src="images/004.jpeg"/></li>
+            <li><img src="images/005.jpeg"/></li>
+            <li><img src="images/006.jpeg"/></li>
+        </ul>
+    </div>
+    <div id="yes3">
+        <ul>
+            <li><a href="#"><img src="images/001.jpeg"/></a></li>
+            <li><a href="#"><img src="images/002.jpeg"/></a></li>
+            <li><a href="#"><img src="images/003.jpeg"/></a></li>
+            <li><img src="images/004.jpeg"/></li>
+            <li><img src="images/005.jpeg"/></li>
+            <li><img src="images/006.jpeg"/></li>
+        </ul>
+    </div>
+    <div id="yes4">
+        <ul>
+            <li><a href="#"><img src="images/001.jpeg"/></a></li>
+            <li><a href="#"><img src="images/002.jpeg"/></a></li>
+            <li><a href="#"><img src="images/003.jpeg"/></a></li>
+            <li><a href="#"><img src="images/004.jpeg"/></a></li>
+            <li><a href="#"><img src="images/005.jpeg"/></a></li>
+            <li><a href="#"><img src="images/006.jpeg"/></a></li>
+            <li><img src="images/001.jpeg"/></li>
+            <li><img src="images/002.jpeg"/></li>
+            <li><img src="images/003.jpeg"/></li>
+            <li><img src="images/004.jpeg"/></li>
+            <li><img src="images/005.jpeg"/></li>
+            <li><img src="images/006.jpeg"/></li>
+        </ul>
+    </div>
+<script>
+$(function(){
+	$('#yes').YesShow();
+	$('#yes1').YesShow({action:'slide',show:1,width:400,height:500});
+	$('#yes2').YesShow({action:'move',direction:'left',show:2});
+	$('#yes3').YesShow({action:'move',show:3});
+	$('#yes4').YesShow({action:'fade',show:4});
+});
+</script>
+</body>
+</html>
