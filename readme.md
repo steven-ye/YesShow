@@ -1,4 +1,4 @@
-YesShow
+jQuery.YesShow
 
 Options:
    width: 300px,
@@ -21,3 +21,8 @@ Usage:
 	$('.Yes').YesShow({action:'fade',show:4});   
 	
 2015.12.28
+
+New option:
+   zoom : true/false
+   
+2034.12.31

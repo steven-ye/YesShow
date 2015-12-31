@@ -1,38 +1,30 @@
 /*
-* YesShow
+* YesShow v1.1
 * Steven Ye
 * Email: steven_ye@foxmail.com
-* Date: 2015-12-27
+* Date: 2015-12-30
 * Usage: action: fade||slide||move||default
 *        show: 0-4
 *        auto: true/false
-*        direction(only for move): up||left
+*        direction: only for move: up/left
+*        zoom: true/false (new option vs v1.0)
 */
 
 ;(function($, window, document,undefined) {
-    var defaults = {
-		width : 300,
-        height: 300,
-		speed : 800,
-		pause : 2000,
-		action: 'fade',
-		direction:'up',
-		auto: true,
-		show: 0,
-		prev: '<',
-		next: '>'
-    };
-	
+
     $.fn.YesShow = function(options) {
-		var s=$.extend({},defaults,options);
+		var s=$.extend({},$.fn.YesShow.defaults,options);
         return this.addClass('YesShow').each(function(){
 			var W=s.width?s.width:$(this).width(),
 			        H=s.height?s.height:$(this).height(),
 				    ul=$(this).find('ul'),
 					lis=$('li',ul),
-					m=lis.length,i=1,j=0,t;
+					m=lis.length,i=1,j=0,t,
+					div = $('<div>').append(ul).prependTo($(this));
 				
-				$(this).css({'width':W,'height':H});
+				div.css({'width':W,'height':H,'overflow':'hidden',
+				         'border':'1px solid #ccc'});
+				$(this).css({'border':'none'});
 				lis.css({'width':W,'height':H});
 				if(s.action=='move'){
 					if(s.direction=='left')ul.css('width',W*m);
@@ -40,9 +32,6 @@
 					lis.hide();
 					lis.eq(0).show();
 				}
-				lis.each(function(){
-					$(this).hover(_stop,_auto);
-				});
 				
 				if(s.show){
 					var p = $('<p>').appendTo($(this));
@@ -62,24 +51,25 @@
 					    p.addClass('thumbs transparent');
 					}else if(s.show==4){
 						p.addClass('thumbs');
-						var div = $('<div>').append(ul).prependTo($(this)),
+						var P = $('<p>').append(p).appendTo($(this)),
 						    w = spans.eq(0).width();
-						div.css({'width':W,'height':H,'overflow':'hidden','border':'1px solid #ccc'});
+						
+						P.css({'width':W,'overflow':'hidden','position':'relative'});
 						p.css('width',(w+8)*m);
-						$(this).css({'width':W+2,'height':H+p.height()+2,'border':'none'});
+						$(this).css({'width':W+2,'height':H+p.height()+2,'border':'none','overflow':'visible'});
 						if(p.width()>W){
-							p.css('margin','0 10px');
+							p.css('margin','0 8px');
 							var prev = $('<a>').appendTo($(this)).addClass('prev transparent'),
 							    next = $('<a>').appendTo($(this)).addClass('next transparent');
 							prev.html(s.prev).click(function(){
-								var left=parseInt(p.css('left'));
+								var left=parseInt(p.css('margin-left'));
 								if(left<-10)
-								p.animate({'left':left+(w+8)});
+								p.animate({'margin-left':left+(w+8)});
 							});
 							next.html(s.next).click(function(){
-								var left=parseInt(p.css('left'));
+								var left=parseInt(p.css('margin-left'));
 								if(left>W-p.width())
-								p.animate({'left':left-(w+8)});
+								p.animate({'margin-left':left-(w+8)});
 							});
 						}
 					}
@@ -90,13 +80,39 @@
 						},_auto);
 					});
 				}
+				if(s.zoom){
+					var zoom=$('<div class="zoom">').hide().appendTo($(this)),
+					    img = $('<img>').css({width:s.big_width,height:s.big_height}).appendTo(zoom);
+					lis.each(function(){
+						$(this).hover(function(){
+							img.prop('src',$(this).find('img').prop('src'));
+							zoom.html(img).fadeIn('slow');
+						},function(){
+							zoom.fadeOut('slow',function(){$(this).html();});
+						});
+						$(this).mousemove(function(e){
+							var x=e.screenX-div.offset().left,
+							    y=e.screenY-div.offset().top;
+							
+							x = zoom.width()/2-(x/div.width())*img.width(),
+							y = zoom.height()/2-(y/div.height())*img.height();
+							x = x<0?x:0;y = y<0?y:0;
+							if(x<zoom.width()-img.width())x=zoom.width()-img.width();
+							if(y<zoom.height()-img.height())y=zoom.height()-img.width();
+							img.css({'margin-left': x,'margin-top':y});
+						});
+					});
+				}
+				lis.each(function(){
+					$(this).hover(_stop,_auto);
+				});
 				_auto();
 				function slide(){
 					if(i==j)return i++;
 					switch(s.action){
 					  case('fade'):
-					    lis.eq(j).fadeOut(s.speed);
-					    lis.eq(i).fadeIn(s.speed);
+					    lis.eq(j).hide();
+						lis.eq(i).fadeIn(s.speed);
 						break;
 					  case('slide'):
 					    lis.eq(j).slideUp(s.speed);
@@ -123,5 +139,20 @@
 				function _stop(){clearInterval(t);}
 		});
     };
+	$.fn.YesShow.defaults={
+		width : 300,
+        height: 300,
+		big_width: 900,
+		big_height:900,
+		speed : 800,
+		pause : 2000,
+		action: 'fade',
+		direction:'up',
+		auto: true,
+		zoom: false,
+		show: 0,
+		prev: '<',
+		next: '>'
+	};
 	$.fn.yesShow = $.fn.YesShow;
 })(jQuery, window, document);

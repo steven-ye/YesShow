@@ -6,7 +6,6 @@
 	width:300px;
 	height:300px;
 	border:1px solid #ccc;
-	overflow:hidden;
 }
 .YesShow img{
 	border:0;
@@ -31,10 +30,6 @@
     *zoom:1;
 	letter-spacing:normal;
     word-spacing:normal;
-	font-size:12px;
-	text-align:center;
-	vertical-align:middle;
-	line-height: 300px;
 }
 .YesShow>p{
 	margin:0;
@@ -42,7 +37,7 @@
 	bottom:0;
 	right:2px; 
 }
-.YesShow>p span{
+.YesShow p>span{
 	display:inline-block;
 	width: 8px;
 	height:8px;
@@ -50,25 +45,25 @@
 	margin: 2px;
 	cursor:pointer;
 }
-.YesShow>p span.on{
+.YesShow p>span.on{
 	background-color:#f00;
 }
-.YesShow>p.num span{
+.YesShow p.num span{
 	width: 20px;
 	height:20px;
 	line-height:20px;
 	text-align:center;
 	color:#fff;
 }
-.YesShow>p.thumbs{
+.YesShow p.thumbs{
 	left:-2px;
 }
-.YesShow>p.thumbs span{
+.YesShow p.thumbs span{
 	width: 40px;
 	height:40px;
 	border:2px solid #ccc;
 }
-.YesShow>p.thumbs span.on{
+.YesShow p.thumbs span.on{
 	border-color:#00f;
 }
 .YesShow .prev,.YesShow .next{
@@ -91,4 +86,14 @@
       -moz-opacity:0.6;  
       -khtml-opacity: 0.6;  
       opacity: 0.6; 
+}
+.YesShow .zoom{
+	width: 400px;
+	height: 400px;
+	border:1px solid #ccc;
+	position:absolute;
+	top: 0;
+	left: 304px;
+	overflow:hidden;
+	z-index: 999
 }
