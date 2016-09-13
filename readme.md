@@ -1,4 +1,4 @@
-jQuery.YesShow
+##jQuery.YesShow
 
 Options:
    width: 300px,
@@ -13,7 +13,7 @@ Options:
    prev: '<',
    next: '>'
 
-Usage:
+####Usage:
     $('#YesShow').YesShow();
 	$('#YesShow').YesShow({action:'slide',show:1,width:400,height:500});
 	$('#YesShow').YesShow({action:'move',direction:'left',show:2});
@@ -25,4 +25,4 @@ Usage:
 New option:
    zoom : true/false
    
-2034.12.31
+2015.12.31
