@@ -1,0 +1,6 @@
+{
+  "name": "Yesshow",
+  "tagline": "jQuery.YesShow",
+  "body": "##jQuery.YesShow\r\n\r\nOptions:\r\n   width: 300px,\r\n   height:300px,\r\n   speed :800,\r\n   pause :2000,\r\n   auto : true/false,\r\n   action: fade||slide||move||default\r\n   show: 0-4\r\n   auto: true/false\r\n   direction(only for move): up||left,\r\n   prev: '<',\r\n   next: '>'\r\n\r\n####Usage:\r\n    $('#YesShow').YesShow();\r\n\t$('#YesShow').YesShow({action:'slide',show:1,width:400,height:500});\r\n\t$('#YesShow').YesShow({action:'move',direction:'left',show:2});\r\n\t$('#YesShow').YesShow({action:'move',show:3});\r\n\t$('.Yes').YesShow({action:'fade',show:4});   \r\n\t\r\n2015.12.28\r\n\r\nNew option:\r\n   zoom : true/false\r\n   \r\n2015.12.31\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
